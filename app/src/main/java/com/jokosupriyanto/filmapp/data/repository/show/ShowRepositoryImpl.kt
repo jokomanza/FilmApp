@@ -14,13 +14,13 @@ class ShowRepositoryImpl : ShowRepository {
         val request = ApiService.buildService(TvMazeApi::class.java)
         val call = request.findBy(key)
 
-        call.enqueue(object : Callback<Result> {
-            override fun onResponse(call: Call<Result>, response: Response<Result>) {
+        call.enqueue(object : Callback<List<Result?>> {
+            override fun onResponse(call: Call<List<Result?>>, response: Response<List<Result?>>) {
                 if (response.isSuccessful){
-                    callback.success(response.body()?.show)
+                    callback.success(response.body()?.get(0)?.show)
                 }
             }
-            override fun onFailure(call: Call<Result>, t: Throwable) {
+            override fun onFailure(call: Call<List<Result?>>, t: Throwable) {
                 callback.failed(t.message)
             }
         })

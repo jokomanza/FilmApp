@@ -8,5 +8,5 @@ import retrofit2.http.Query
 interface TvMazeApi {
 
     @GET("search/shows")
-    fun findBy(@Query("q") key: String): Call<Result>
+    fun findBy(@Query("q") key: String): Call<List<Result?>>
 }

@@ -30,7 +30,7 @@ class ExampleUnitTest {
         viewModel.fetchDetails()
         viewModel.getDetail().observeForever(Observer {
             println("nilai it adalah $it")
-            assertNull(it)
+            assertNotNull(it)
         })
         Thread.sleep(10000)
         println(viewModel.getDetail().value)

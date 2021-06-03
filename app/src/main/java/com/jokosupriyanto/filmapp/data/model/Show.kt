@@ -8,7 +8,7 @@ data class Show(
     val runtime: Int,
     val averageRuntime: Int,
     val premiered: Date,
-    val officialSite: Uri,
+    val officialSite: String,
     val schedule: Schedule,
     val rating: Rating,
     val weight: Int,

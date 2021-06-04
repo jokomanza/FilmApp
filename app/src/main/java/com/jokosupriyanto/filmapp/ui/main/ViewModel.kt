@@ -9,14 +9,15 @@ import com.jokosupriyanto.filmapp.data.repository.show.ShowRepository
 import com.jokosupriyanto.filmapp.data.repository.show.ShowRepositoryImpl
 
 class ViewModel: ViewModel() {
-    private val result = MutableLiveData<Show?>()
+    private val result = MutableLiveData<List<Result?>?>()
     private val repository: ShowRepository = ShowRepositoryImpl()
     public var error: String? = ""
 
     fun fetchDetails(key: String) {
         repository.findShow(key, object:ShowRepositoryImpl.Callback1 {
-            override fun success(show: Show?) {
-                result.postValue(show)
+
+            override fun success(list: List<Result?>?) {
+                result.postValue(list)
             }
 
             override fun failed(error: String?) {
@@ -27,7 +28,7 @@ class ViewModel: ViewModel() {
 
     }
 
-    fun getDetail(): LiveData<Show?> {
+    fun getDetail(): LiveData<List<Result?>?> {
         return result
     }
 

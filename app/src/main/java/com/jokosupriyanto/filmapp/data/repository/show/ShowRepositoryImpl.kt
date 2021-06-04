@@ -17,7 +17,10 @@ class ShowRepositoryImpl : ShowRepository {
         call.enqueue(object : Callback<List<Result?>> {
             override fun onResponse(call: Call<List<Result?>>, response: Response<List<Result?>>) {
                 if (response.isSuccessful){
-                    callback.success(response.body()?.get(0)?.show)
+                    if (response.body()?.count()!! < 1)
+                        callback.failed("not found")
+                    else
+                        callback.success(response.body())
                 }
             }
             override fun onFailure(call: Call<List<Result?>>, t: Throwable) {
@@ -27,7 +30,7 @@ class ShowRepositoryImpl : ShowRepository {
     }
 
     interface Callback1 {
-        fun success(result: Show?)
+        fun success(result: List<Result?>?)
         fun failed(error: String?)
     }
 }

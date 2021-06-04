@@ -27,7 +27,7 @@ class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
         // observe = viewModel.getDetail()
-        viewModel.fetchDetails()
+        viewModel.fetchDetails("WandaVision")
         viewModel.getDetail().observeForever(Observer {
             println("nilai it adalah $it")
             assertNotNull(it)

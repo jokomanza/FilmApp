@@ -13,8 +13,8 @@ class ViewModel: ViewModel() {
     private val repository: ShowRepository = ShowRepositoryImpl()
     public var error: String? = ""
 
-    fun fetchDetails() {
-        repository.findShow("naruto", object:ShowRepositoryImpl.Callback1 {
+    fun fetchDetails(key: String) {
+        repository.findShow(key, object:ShowRepositoryImpl.Callback1 {
             override fun success(show: Show?) {
                 result.postValue(show)
             }

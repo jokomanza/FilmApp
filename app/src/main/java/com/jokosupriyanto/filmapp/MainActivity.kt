@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import com.airbnb.epoxy.*
 import com.jokosupriyanto.filmapp.data.model.Result
 import com.jokosupriyanto.filmapp.ui.main.ViewModel
@@ -70,13 +71,14 @@ class MainActivity : AppCompatActivity() {
                             .result(res)
                             .clickListener { v ->
                                 Toast.makeText(this@MainActivity, res?.show?.name, Toast.LENGTH_SHORT).show()
-                            }
+                            }.spanSizeOverride { _, _, _ -> 1 }
                     })
                     .addTo(this)
             }
 
         }
 
+        rvTask.layoutManager = GridLayoutManager(this, 1)
         rvTask.setController(controller)
         viewModel.getDetail().observe(this, {
             controller.apply {

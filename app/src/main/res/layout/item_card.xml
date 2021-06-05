@@ -41,7 +41,7 @@
                 android:id="@+id/materialTextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text='@{String.format("%d people", result.show.id)}'
+                android:text='@{String.valueOf(result.show.rating.average)}'
                 app:layout_constraintStart_toStartOf="@+id/materialTextView"
                 app:layout_constraintTop_toBottomOf="@+id/materialTextView"
                 tools:text="4 People" />

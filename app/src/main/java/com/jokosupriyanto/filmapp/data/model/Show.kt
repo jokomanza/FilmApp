@@ -4,6 +4,12 @@ import android.net.Uri
 import java.util.*
 
 data class Show(
+    val id: String,
+    val url: String,
+    val name: String,
+    val type: String,
+    val language: String,
+    val genres: List<String>,
     val status: String,
     val runtime: Int,
     val averageRuntime: Int,

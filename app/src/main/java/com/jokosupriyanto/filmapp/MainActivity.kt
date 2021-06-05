@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.SearchView
-import androidx.lifecycle.Observer
 import com.jokosupriyanto.filmapp.ui.main.ViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -38,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel() {
-        viewModel.getDetail().observe(this, Observer {
+        viewModel.getDetail().observe(this, {
             it?.forEach {
                 Log.i(TAG, "observeViewModel: $it")
             }
